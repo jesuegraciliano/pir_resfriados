@@ -1,30 +1,33 @@
+document.getElementById('btnCalcular')
+  .addEventListener('click', calculaCargaTermica);
+
 function calculaCargaTermica() {
+  // Leitura dos dados
   const L       = parseFloat(document.getElementById('largura').value);
   const C       = parseFloat(document.getElementById('comprimento').value);
   const H       = parseFloat(document.getElementById('altura').value);
+  const m       = parseFloat(document.getElementById('movimento').value);
   const Te      = parseFloat(document.getElementById('tempExterna').value);
   const Ti      = parseFloat(document.getElementById('tempInterna').value);
-  // Corrigido para usar o id correto
-  const m       = parseFloat(document.getElementById('movimento').value);
+  const Tp      = parseFloat(document.getElementById('tempProduto').value);
 
+  // Cálculos básicos
   const areaPiso  = L * C;
   const volume    = L * C * H;
   const areaTotal = 2 * (L * C + L * H + C * H);
 
-  const U         = 0.03 / 0.1; // 0,126 W/m²·K
-  const conducao  = U * areaTotal * (Te - Ti);
+  // Cálculo de cada parcela
+  const U           = 0.03 / 0.1; // 0,126 W/m²·K
+  const conducao    = U * areaTotal * (Te - Ti);
+  const produto     = 1000 * (m * 3.6 * (Ti - Tp)) / (16 * 3600);
+  const motores     = 5.6 * L * C * H;
+  const pessoas     = 273;
+  const iluminacao  = 10 * areaPiso;
+  const fatorInf    = 0.00016;
+  const infiltracao = 1000 * fatorInf * volume * 91 * (Te - Ti);
 
-  const produto   = 1000 * (m * 3.6 * (Ti - Tp)) / (16 * 3600);
-
-  const motores   = 5.6 * L * C * H;
-  const pessoas   = 273;
-  const iluminacao= 10 * areaPiso;
-  // Uso de ponto decimal e diferença de temperatura
-  const fatorInf  = 0.00016;
-  const infiltracao= 1000 * fatorInf * volume * 91 * (Te - Ti);
-
+  // Soma bruta e exibição
   const cargaBruta = conducao + produto + motores + pessoas + iluminacao + infiltracao;
-
   const out = document.getElementById('resultado');
   out.innerHTML = `
     <p><strong>Condução:</strong> ${conducao.toFixed(0)} W</p>
