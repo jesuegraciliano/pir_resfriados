@@ -16,27 +16,27 @@ function calculaCargaTermica() {
 
   // Parcela Condução térmica (W)
   const U = 0.03 / 0.1;  // 0,126 W/m²·K
-  const conducao = U * areaTotal * (Te - Ti);  // deverá resultar em ~756 W
+  const conducao = U * areaTotal * (Te - Ti);  
 
   // Parcela Produto (W)
   // Fórmula original: 1000*(ÁreaPiso*3.6*(Ti-Tp))/(16*3600)
-  const produto = 1000 * (m * 3.6 * (Tp - Ti)) / (16 * 3600);  // 
+  const produto = 1000 * (m * 3.6 * (Tp - Ti)) / (16 * 3600); 
 
   // Parcela Motores do evaporador (W)
-  const motores = 5.6 * L * C * H;  //
+  const motores = 5.6 * L * C * H;  
 
   // Parcela Pessoas
-  const pessoas = 273;  // valor fixo
+  const pessoas = 273;  
 
   // Parcela Iluminação (W)
-  const iluminacao = 10 * areaPiso;  // 
+  const iluminacao = 10 * areaPiso; 
 
   // Parcela Infiltração (W)
   const infiltracao = 1000 * 0,00016* volume * 91;  
 
   // Soma bruta e total com fator de segurança
   const cargaBruta = conducao + produto + motores + pessoas + iluminacao + infiltracao;
-  const cargaSeg  = cargaBruta;  // sem fator de segurança para conferência dos 3971 W
+  const cargaSeg  = cargaBruta;  
 
   // Verificação dos valores individuais
   console.log('Condução:',   conducao.toFixed(0));
@@ -45,7 +45,7 @@ function calculaCargaTermica() {
   console.log('Pessoas:',    pessoas);
   console.log('Iluminação:', iluminacao.toFixed(0));
   console.log('Infiltração:',infiltracao.toFixed(0));
-  console.log('Total (bruto):', cargaBruta.toFixed(0));  // deverá ser 3971
+  console.log('Total (bruto):', cargaBruta.toFixed(0));  
 
   // Exibição na tela (se quiser mostrar o total bruto)
   const out = document.getElementById('resultado');
