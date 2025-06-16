@@ -20,19 +20,19 @@ function calculaCargaTermica() {
 
   // Parcela Produto (W)
   // Fórmula original: 1000*(ÁreaPiso*3.6*(Ti-Tp))/(16*3600)
-  const produto = 1000 * (m * 3.6 * (Ti - Tp)) / (16 * 3600);  // ~2156 W
+  const produto = 1000 * (m * 3.6 * (Tp - Ti)) / (16 * 3600);  // 
 
   // Parcela Motores do evaporador (W)
-  const motores = 5.6 * L * C * H;  // ~253 W
+  const motores = 5.6 * L * C * H;  //
 
   // Parcela Pessoas
   const pessoas = 273;  // valor fixo
 
   // Parcela Iluminação (W)
-  const iluminacao = 10 * areaPiso;  // ~113 W
+  const iluminacao = 10 * areaPiso;  // 
 
   // Parcela Infiltração (W)
-  const infiltracao = 1000 * fatorinfiltra* volume * 91;  // ~420 W
+  const infiltracao = 1000 * 0,00016* volume * 91;  
 
   // Soma bruta e total com fator de segurança
   const cargaBruta = conducao + produto + motores + pessoas + iluminacao + infiltracao;
