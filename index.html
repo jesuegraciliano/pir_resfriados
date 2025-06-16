@@ -8,25 +8,11 @@
 </head>
 <body>
   <main>
-    <h1>Calculadora de Carga Térmica</h1>
-    <form id="calcForm">
-      <section>
-        <h2>Dados de Entrada</h2>
-        <label>Largura (m): <input type="number" step="0.01" id="largura" required></label>
-        <label>Comprimento (m): <input type="number" step="0.01" id="comprimento" required></label>
-        <label>Altura (m): <input type="number" step="0.01" id="altura" required></label>
-        <label>Movimento diário (kg): <input type="number" id="movimento" required></label>
-        <label>Temperatura externa (°C): <input type="number" step="0.1" id="tempExterna" required></label>
-        <label>Temperatura interna (°C): <input type="number" step="0.1" id="tempInterna" required></label>
-        <label>Temperatura de entrada do produto (°C): <input type="number" step="0.1" id="tempProduto" required></label>
-      </section>
-      <button type="button" id="btnCalcular">Calcular</button>
-    </form>
-    <section id="resultado">
-      <h2>Resultados</h2>
-      <!-- Aqui serão inseridos os valores calculados -->
-    </section>
+    <!-- Seu formulário aqui -->
+    <button type="button" id="btnCalcular">Calcular</button>
+    <section id="resultado"></section>
   </main>
+  <!-- Incluir o script ao final do body garante que todos os elementos já estejam carregados -->
   <script src="script.js"></script>
 </body>
 </html>
