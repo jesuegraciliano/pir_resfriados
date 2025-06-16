@@ -19,7 +19,7 @@ function calculaCargaTermica() {
   // Cálculo de cada parcela
   const U           = 0.03 / 0.1; // 0,126 W/m²·K
   const conducao    = U * areaTotal * (Te - Ti);
-  const produto     = 1000 * (m * 3.6 * (Ti - Tp)) / (16 * 3600);
+  const produto     = 1000 * (m * 3.6 * (Tp - Ti)) / (16 * 3600);
   const motores     = 5.6 * L * C * H;
   const pessoas     = 273;
   const iluminacao  = 10 * areaPiso;
