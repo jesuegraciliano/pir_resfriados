@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 1rem;
+  background: #f9f9f9;
+}
+main {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+h1, h2 {
+  text-align: center;
+}
+form label {
+  display: block;
+  margin: 0.5rem 0;
+}
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.2rem;
+  box-sizing: border-box;
+}
+button {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#resultado {
+  margin-top: 2rem;
+}
