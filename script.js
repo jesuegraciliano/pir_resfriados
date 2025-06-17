@@ -3,13 +3,14 @@ document.getElementById('btnCalcular')
 
 function calculaCargaTermica() {
   // Leitura dos dados
-  const L       = parseFloat(document.getElementById('largura').value);
-  const C       = parseFloat(document.getElementById('comprimento').value);
-  const H       = parseFloat(document.getElementById('altura').value);
-  const m       = parseFloat(document.getElementById('movimento').value);
-  const Te      = parseFloat(document.getElementById('tempExterna').value);
-  const Ti      = parseFloat(document.getElementById('tempInterna').value);
-  const Tp      = parseFloat(document.getElementById('tempProduto').value);
+  // Leitura dos dados
+  const L       = parseFloat(document.getElementById('largura').value.replace(',', '.'));
+  const C       = parseFloat(document.getElementById('comprimento').value.replace(',', '.'));
+  const H       = parseFloat(document.getElementById('altura').value.replace(',', '.'));
+  const m       = parseFloat(document.getElementById('movimento').value.replace(',', '.'));
+  const Te      = parseFloat(document.getElementById('tempExterna').value.replace(',', '.'));
+  const Ti      = parseFloat(document.getElementById('tempInterna').value.replace(',', '.'));
+  const Tp      = parseFloat(document.getElementById('tempProduto').value.replace(',', '.'));
 
   // Cálculos básicos
   const areaPiso  = L * C;
