@@ -23,7 +23,7 @@ function calculaCargaTermica() {
   const motores     = 5.6 * L * C * H;
   const pessoas     = 273;
   const iluminacao  = 10 * areaPiso;
-  const fatorInf    = 0.00016;
+  const fatorInf    = 2.4e-4 * Math.exp(-0.0108 * volume);
   const infiltracao = 1000 * fatorInf * volume * 91;
 
   // Soma bruta e exibição
