@@ -19,15 +19,23 @@ function calculaCargaTermica() {
   // Cálculo de cada parcela
   const U           = 0.03 / 0.1; // 0,126 W/m²·K
   const conducao    = U * areaTotal * (Te - Ti);
-  const produto     = 1000 * (m * 3.6 * (Tp - Ti)) / (16 * 3600);
+  const produto     = 1000 * (m * 3.6 * (Ti - Tp)) / (16 * 3600);
   const motores     = 5.6 * L * C * H;
   const pessoas     = 273;
   const iluminacao  = 10 * areaPiso;
   const fatorInf    = 2.4e-4 * Math.exp(-0.0108 * volume);
-  const infiltracao = 1000 * fatorInf * volume * 91;
+  const infiltracao = 1000 * fatorInf * volume * 91 * (Te - Ti);
 
-  // Soma bruta e exibição
+  // Cálculo da carga térmica total
   const cargaBruta = conducao + produto + motores + pessoas + iluminacao + infiltracao;
+  
+  // Aplicar fator de segurança de 20%
+  const cargaSeguraW = cargaBruta * 1.2;
+
+  // Converter de Watts (W) para kcal/h (dividindo por 1,16)
+  const cargaSeguraKcal = cargaSeguraW / 1.16;
+
+  // Exibição dos resultados
   const out = document.getElementById('resultado');
   out.innerHTML = `
     <p><strong>Condução:</strong> ${conducao.toFixed(0)} W</p>
@@ -36,6 +44,8 @@ function calculaCargaTermica() {
     <p><strong>Pessoas:</strong> ${pessoas} W</p>
     <p><strong>Iluminação:</strong> ${iluminacao.toFixed(0)} W</p>
     <p><strong>Infiltração:</strong> ${infiltracao.toFixed(0)} W</p>
-    <p><strong><em>Carga térmica total:</em></strong> ${cargaBruta.toFixed(0)} W</p>
+    <p><strong>Carga térmica total (bruta):</strong> ${cargaBruta.toFixed(0)} W</p>
+    <p><strong>Carga térmica com 20% de segurança:</strong> ${cargaSeguraW.toFixed(0)} W</p>
+    <p><strong>Carga térmica com segurança em kcal/h:</strong> ${cargaSeguraKcal.toFixed(0)} kcal/h</p>
   `;
 }
